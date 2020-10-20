@@ -24,7 +24,7 @@ while(True):
     # Do your magic here
     Z = frame.reshape((-1, 3))
     Z_float = np.float32(Z)
-    ret, label, center = cv2.kmeans(Z_float, K, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS)
+    ret, label, center = cv2.kmeans(Z_float, K, None, criteria, 6, cv2.KMEANS_RANDOM_CENTERS)
     center_int = np.uint8(center)
     res = center_int[label.flatten()]
     split_length = np.size(label)/n_splits
@@ -37,6 +37,7 @@ while(True):
         ind = np.argmax(counts)
         top_color = center_int[ind, :]
         top_colors[i, :] = top_color
+
 
     print(top_colors)
 
